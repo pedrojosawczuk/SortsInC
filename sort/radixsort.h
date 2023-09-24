@@ -1,8 +1,5 @@
 #ifndef RADIXSORT_H
 #define RADIXSORT_H
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
 
 void radixsort(int vetor[], int tam)
 {
