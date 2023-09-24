@@ -112,16 +112,16 @@ int main(void)
    while (choice != 0)
    {
       printf("Choice a option\n");
-      printf(" 1 - AutoSort\n");
+      printf(" 1 - Auto Sort 🤖\n");
       printf("\n");
-      printf(" 2 - BubbleSort\n");
-      printf(" 3 - InsertSort\n");
-      printf(" 4 - SelectSort\n");
-      printf(" 5 - ShellSort\n");
-      printf(" 6 - QuickSort\n");
-      printf(" 7 - QuickSort-Lomuto (NOT WORKING!!!)\n");
-      printf(" 8 - MergeSort\n");
-      printf(" 9 - RadixSort\n");
+      printf(" 2 - Bubble Sort 🧼\n");
+      printf(" 3 - Insertion Sort 🧩\n");
+      printf(" 4 - Selection Sort 🎯\n");
+      printf(" 5 - Shell Sort 🐚\n");
+      printf(" 6 - Quick Sort ⚡\n");
+      printf(" 7 - Quick Sort ⚡ - Lomuto (NOT WORKING!!!)\n");
+      printf(" 8 - Merge Sort 🧩🧩\n");
+      printf(" 9 - Radix Sort 🔍\n");
       printf(" 0 - Exit\n");
       scanf("%d", &choice);
 
