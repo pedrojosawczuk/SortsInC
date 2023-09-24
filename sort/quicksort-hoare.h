@@ -1,7 +1,7 @@
-#ifndef QUICKSORT_H
-#define QUICKSORT_H
+#ifndef QUICKSORT_HOARE_H
+#define QUICKSORT_HOARE_H
 
-int particione(int vetor[], int left, int right)
+int particioneHoare(int vetor[], int left, int right)
 {
    int x = vetor[left];
    srand(time(NULL));
@@ -41,7 +41,7 @@ void quicksortRecurse(int vetor[], int left, int right)
    }
 }
 
-void quicksort(int vetor[], int tam) {
+void quicksortHoare(int vetor[], int tam) {
    quicksortRecurse(vetor, 0, tam-1);
 }
 

@@ -1,15 +1,15 @@
 #include <stdio.h>
-#include <sys/time.h>
-#include <time.h>
 #include <stdlib.h>
 #include <math.h>
+#include <sys/time.h>
+#include <time.h>
 #include <dirent.h>
 
 #include "./sort/bubblesort.h"
 #include "./sort/insertsort.h"
 #include "./sort/selectsort.h"
 #include "./sort/shellsort.h"
-#include "./sort/quicksort.h"
+#include "./sort/quicksort-hoare.h"
 #include "./sort/quicksort-lomuto.h"
 #include "./sort/mergesort.h"
 #include "./sort/radixsort.h"
@@ -36,7 +36,7 @@ int main(void)
    int choice;
    int vector[tam[0]];
 
-   printf("Generate new Files?\n");
+   printf("Generate new Files?\n \033[1m(This option will replace existing files!!!)\033[0m\n");
    printf(" 1 - Yes\n");
    printf(" 0 - No\n");
    scanf("%d", &choice);
@@ -51,7 +51,7 @@ int main(void)
          if (file == NULL)
          {
             system("clear");
-            printf("Unable to Create File %s\n", fileName);
+            printf("\033[1mUnable to Create File\033[0m %s\n", fileName);
             exit(0);
          }
 
@@ -64,7 +64,7 @@ int main(void)
          if (file == NULL)
          {
             system("clear");
-            printf("Unable to Create File %s\n", fileName);
+            printf("\033[1mUnable to Create File\033[0m %s\n", fileName);
             exit(0);
          }
 
@@ -88,14 +88,14 @@ int main(void)
          if (file == NULL)
          {
             system("clear");
-            printf("Unable to Create File %s\n", fileName);
+            printf("\033[1mUnable to Create File\033[0m %s\n", fileName);
             exit(0);
          }
 
          writeVectorNumbersToFile(tam[count], file, vector);
          fclose(file);
          system("clear");
-         printf("Files Created Successfully\n");
+         printf("\033[1mFiles Created Successfully\033[0m\n");
       }
    }
    // Check for Duplicates on file
@@ -112,17 +112,17 @@ int main(void)
    while (choice != 0)
    {
       printf("Choice a option\n");
-      printf(" 1 - Auto Sort 🤖\n");
+      printf(" 1-\033[1mAuto Sort\033[0m 🤖\n");
       printf("\n");
-      printf(" 2 - Bubble Sort 🧼\n");
-      printf(" 3 - Insertion Sort 🧩\n");
-      printf(" 4 - Selection Sort 🎯\n");
-      printf(" 5 - Shell Sort 🐚\n");
-      printf(" 6 - Quick Sort ⚡\n");
-      printf(" 7 - Quick Sort ⚡ - Lomuto (NOT WORKING!!!)\n");
-      printf(" 8 - Merge Sort 🧩🧩\n");
-      printf(" 9 - Radix Sort 🔍\n");
-      printf(" 0 - Exit\n");
+      printf(" 2-\033[1mBubble Sort\033[0m 🧼\n");
+      printf(" 3-\033[1mInsertion Sort\033[0m 🧩\n");
+      printf(" 4-\033[1mSelection Sort\033[0m 🎯\n");
+      printf(" 5-\033[1mShell Sort\033[0m 🐚\n");
+      printf(" 6-\033[1mQuick Sort - Hoare\033[0m ⚡\n");
+      printf(" 7-\033[1mQuick Sort - Lomuto\033[0m ⚡ (NOT WORKING!!!)\n");
+      printf(" 8-\033[1mMerge Sort\033[0m 🧩🧩\n");
+      printf(" 9-\033[1mRadix Sort\033[0m 🔍\n");
+      printf(" 0-\033[1mExit\033[0m\n");
       scanf("%d", &choice);
 
       switch (choice)
@@ -137,7 +137,7 @@ int main(void)
             autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[1], sortLowerName[1], insertsort);
             autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[2], sortLowerName[2], selectsort);
             autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[3], sortLowerName[3], shellsort);
-            autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[4], sortLowerName[4], quicksort);
+            autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[4], sortLowerName[4], quicksortHoare);
             // autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[5], sortLowerName[5], quicksortLomuto);
             autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[6], sortLowerName[6], mergesort);
             autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[7], sortLowerName[7], radixsort);
@@ -213,7 +213,7 @@ int main(void)
          imprimeVetor(vector, tam[0]);
 
          printf("QuickSort...\n");
-         executionTime = measureExecutionTime(quicksort, vector, tam[0]);
+         executionTime = measureExecutionTime(quicksortHoare, vector, tam[0]);
 
          imprimeVetor(vector, tam[0]);
          printf("Execution time: %f seconds\n", executionTime);
