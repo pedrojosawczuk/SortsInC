@@ -13,19 +13,20 @@
 #include "./sort/quicksort-lomuto.h"
 #include "./sort/mergesort.h"
 #include "./sort/radixsort.h"
+#include "./sort/heapsort.h"
 #include "./utils/utils.h"
 #include "./utils/autosort.h"
 #include "./utils/writeToFile.h"
 
 #define SAMPLES 5
 #define ARRAY_SIZE 4
-#define SORT_SIZE 8
+#define SORT_SIZE 9
 char PATH_OUT[256] = "./output/";
 char PATH_DATA[256] = "./data/";
 int name[ARRAY_SIZE] = {5, 50, 75, 100};
 int tam[ARRAY_SIZE] = {50000, 500000, 750000, 1000000};
-char sortName[SORT_SIZE][255] = {"Bubblesort", "Insertsort", "Selectsort", "Shellsort", "Quicksort", "QuicksortLomuto", "Mergesort", "Radixsort"};
-char sortLowerName[SORT_SIZE][255] = {"bubble", "insert", "select", "shell", "quick", "lomuto", "merge", "radix"};
+char sortName[SORT_SIZE][255] = {"Bubblesort", "Insertsort", "Selectsort", "Shellsort", "Quicksort", "QuicksortLomuto", "Mergesort", "Radixsort", "Heapsort"};
+char sortLowerName[SORT_SIZE][255] = {"bubble", "insert", "select", "shell", "quick", "lomuto", "merge", "radix", "heap"};
 
 int main(void)
 {
@@ -122,6 +123,7 @@ int main(void)
       printf(" 7-\033[1mQuick Sort - Lomuto\033[0m ⚡ (NOT WORKING!!!)\n");
       printf(" 8-\033[1mMerge Sort\033[0m 🧩🧩\n");
       printf(" 9-\033[1mRadix Sort\033[0m 🔍\n");
+      printf(" 10-\033[1mHeap Sort\033[0m 📚\n");
       printf(" 0-\033[1mExit\033[0m\n");
       scanf("%d", &choice);
 
@@ -141,6 +143,7 @@ int main(void)
             // autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[5], sortLowerName[5], quicksortLomuto);
             autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[6], sortLowerName[6], mergesort);
             autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[7], sortLowerName[7], radixsort);
+            autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[7], sortLowerName[7], heapsort);
          }
          break;
 
@@ -259,6 +262,21 @@ int main(void)
 
          printf("RadixSort...\n");
          executionTime = measureExecutionTime(radixsort, vector, tam[0]);
+
+         imprimeVetor(vector, tam[0]);
+         printf("Execution time: %f seconds\n", executionTime);
+         break;
+
+      case 10:
+         system("clear");
+
+         sprintf(fileName, "%s%d-descending.txt", PATH_DATA, name[0]);
+         file = fopen(fileName, "r");
+         file2Vector(vector, file);
+         imprimeVetor(vector, tam[0]);
+
+         printf("HeapSort...\n");
+         executionTime = measureExecutionTime(heapsort, vector, tam[0]);
 
          imprimeVetor(vector, tam[0]);
          printf("Execution time: %f seconds\n", executionTime);
