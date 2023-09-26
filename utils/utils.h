@@ -58,7 +58,7 @@ double measureExecutionTime(SortFunction function, int vetor[], int tam)
    end = clock();
    double timeTaken = (double)(end - start) / CLOCKS_PER_SEC;
    return timeTaken;
-   
+
    // struct timeval start, end;
 
    // gettimeofday(&start, NULL);
@@ -81,4 +81,12 @@ void file2Vector(int vector[], FILE *file)
    }
 }
 
+void validaFile(FILE *file)
+{
+   if (file == NULL)
+   {
+      printf("Não foi possível abrir o arquivo");
+      exit(0);
+   }
+}
 #endif
