@@ -22,6 +22,7 @@ void autosort(int SAMPLES, int ARRAY_SIZE, char PATH_DATA[256], char PATH_OUT[25
    {
       sprintf(outputFileName, "%s%s-%d-output.txt", PATH_OUT, sortLowerName, name);
       output = fopen(outputFileName, "a");
+      validaFile(output);
 
       int choice;
       int vector[tam];
@@ -33,6 +34,8 @@ void autosort(int SAMPLES, int ARRAY_SIZE, char PATH_DATA[256], char PATH_OUT[25
 
       sprintf(fileName, "%sascending-%d.txt", PATH_DATA, name);
       file = fopen(fileName, "r");
+      validaFile(file);
+
       file2Vector(vector, file);
       fclose(file);
       executionTime = measureExecutionTime(function, vector, tam);
@@ -41,6 +44,8 @@ void autosort(int SAMPLES, int ARRAY_SIZE, char PATH_DATA[256], char PATH_OUT[25
 
       sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name);
       file = fopen(fileName, "r");
+      validaFile(file);
+
       file2Vector(vector, file);
       fclose(file);
       executionTime = measureExecutionTime(function, vector, tam);
@@ -49,6 +54,8 @@ void autosort(int SAMPLES, int ARRAY_SIZE, char PATH_DATA[256], char PATH_OUT[25
 
       sprintf(fileName, "%srandom-%d.txt", PATH_DATA, name);
       file = fopen(fileName, "r");
+      validaFile(file);
+      
       file2Vector(vector, file);
       fclose(file);
       executionTime = measureExecutionTime(function, vector, tam);

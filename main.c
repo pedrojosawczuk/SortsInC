@@ -49,6 +49,7 @@ int main(void)
       {
          sprintf(fileName, "%sascending-%d.txt", PATH_DATA, name[count]);
          file = fopen(fileName, "w");
+         validaFile(file);
 
          if (file == NULL)
          {
@@ -62,6 +63,7 @@ int main(void)
 
          sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[count]);
          file = fopen(fileName, "w");
+         validaFile(file);
 
          if (file == NULL)
          {
@@ -75,6 +77,7 @@ int main(void)
 
          sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[count]);
          file = fopen(fileName, "r");
+         validaFile(file);
 
          int vector[tam[count]];
 
@@ -86,6 +89,7 @@ int main(void)
 
          sprintf(fileName, "%srandom-%d.txt", PATH_DATA, name[count]);
          file = fopen(fileName, "w");
+         validaFile(file);
 
          if (file == NULL)
          {
@@ -104,6 +108,8 @@ int main(void)
    /*
    sprintf(fileName, "%s%d-random.txt", name);
    file = fopen(fileName, "r");
+   validaFile(file);
+
    checkForDuplicateNumbers(tam[count], file);
    fclose(file);*/
 
@@ -132,7 +138,7 @@ int main(void)
       {
       case 1:
          system("clear");
-         printf("Auto...\n");
+         printf("AutoSort...\n");
 
          for (int i = 0; i < ARRAY_SIZE; i++)
          {
@@ -153,7 +159,8 @@ int main(void)
 
          sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
-         printf("asdasd %s", fileName);
+         validaFile(file);
+
          file2Vector(vector, file);
          imprimeVetor(vector, tam[SAMPLE_SORT]);
 
@@ -169,6 +176,8 @@ int main(void)
 
          sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
+         validaFile(file);
+
          file2Vector(vector, file);
          imprimeVetor(vector, tam[SAMPLE_SORT]);
 
@@ -184,6 +193,8 @@ int main(void)
 
          sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
+         validaFile(file);
+
          file2Vector(vector, file);
          imprimeVetor(vector, tam[SAMPLE_SORT]);
 
@@ -199,6 +210,8 @@ int main(void)
 
          sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
+         validaFile(file);
+
          file2Vector(vector, file);
          imprimeVetor(vector, tam[SAMPLE_SORT]);
 
@@ -214,6 +227,8 @@ int main(void)
 
          sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
+         validaFile(file);
+
          file2Vector(vector, file);
          imprimeVetor(vector, tam[SAMPLE_SORT]);
 
@@ -229,6 +244,8 @@ int main(void)
 
          sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
+         validaFile(file);
+
          file2Vector(vector, file);
          imprimeVetor(vector, tam[SAMPLE_SORT]);
 
@@ -244,6 +261,8 @@ int main(void)
 
          sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
+         validaFile(file);
+
          file2Vector(vector, file);
          imprimeVetor(vector, tam[SAMPLE_SORT]);
 
@@ -259,6 +278,8 @@ int main(void)
 
          sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
+         validaFile(file);
+
          file2Vector(vector, file);
          imprimeVetor(vector, tam[SAMPLE_SORT]);
 
@@ -274,6 +295,8 @@ int main(void)
 
          sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
+         validaFile(file);
+
          file2Vector(vector, file);
          imprimeVetor(vector, tam[SAMPLE_SORT]);
 
