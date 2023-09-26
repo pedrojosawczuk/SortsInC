@@ -20,7 +20,7 @@ void merge(int vetor[], int left, int middle, int right)
    {
       if (aux[i - left] <= aux[j - left])
       {
-         vetor[k] = aux[j - left];
+         vetor[k] = aux[i - left];
          i++;
       }
       else
@@ -61,7 +61,7 @@ void mergesorteRecurse(int vetor[], int left, int right)
 
 void mergesort(int vetor[], int tam)
 {
-   mergesorteRecurse(vetor, 0, tam / 2);
+   mergesorteRecurse(vetor, 0, tam - 1);
 }
 
 #endif
