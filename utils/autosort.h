@@ -20,7 +20,7 @@ void autosort(int SAMPLES, int ARRAY_SIZE, char PATH_DATA[256], char PATH_OUT[25
 
    for (int i = 0; i < SAMPLES; i++)
    {
-      sprintf(outputFileName, "%s%d-%s-output.txt", PATH_OUT, name, sortLowerName);
+      sprintf(outputFileName, "%s%s-%d-output.txt", PATH_OUT, sortLowerName, name);
       output = fopen(outputFileName, "a");
 
       int choice;
@@ -31,7 +31,7 @@ void autosort(int SAMPLES, int ARRAY_SIZE, char PATH_DATA[256], char PATH_OUT[25
       printf("[AUTO] %s[%d](%d/%d) in '%s' |", sortName, tam, i + 1, SAMPLES, outputFileName);
       fprintf(output, "%s[%d](%d/%d): \n", sortName, tam, i + 1, SAMPLES);
 
-      sprintf(fileName, "%s%d-ascending.txt", PATH_DATA, name);
+      sprintf(fileName, "%sascending-%d.txt", PATH_DATA, name);
       file = fopen(fileName, "r");
       file2Vector(vector, file);
       fclose(file);
@@ -39,7 +39,7 @@ void autosort(int SAMPLES, int ARRAY_SIZE, char PATH_DATA[256], char PATH_OUT[25
       fprintf(output, "  Ascending: %f seconds\n", executionTime);
       printf(" asc: %f seconds", executionTime);
 
-      sprintf(fileName, "%s%d-descending.txt", PATH_DATA, name);
+      sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name);
       file = fopen(fileName, "r");
       file2Vector(vector, file);
       fclose(file);
@@ -47,7 +47,7 @@ void autosort(int SAMPLES, int ARRAY_SIZE, char PATH_DATA[256], char PATH_OUT[25
       fprintf(output, "  Descending: %f seconds\n", executionTime);
       printf(" desc: %f seconds", executionTime);
 
-      sprintf(fileName, "%s%d-random.txt", PATH_DATA, name);
+      sprintf(fileName, "%srandom-%d.txt", PATH_DATA, name);
       file = fopen(fileName, "r");
       file2Vector(vector, file);
       fclose(file);
