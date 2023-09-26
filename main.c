@@ -19,8 +19,9 @@
 #include "./utils/writeToFile.h"
 
 #define SAMPLES 5
-#define ARRAY_SIZE 4
-#define SORT_SIZE 9
+#define ARRAY_SIZE 4  // número de arquivos de amostras, 0, 1, 2, 3 ou 4
+#define SORT_SIZE 9   // número de sort algotimos nos vetores sortName[] and sortLowerName[]
+#define SAMPLE_SORT 3 // de 0, 1, 2 ou 3
 char PATH_OUT[256] = "./output/";
 char PATH_DATA[256] = "./data/";
 int name[ARRAY_SIZE] = {5, 50, 75, 100};
@@ -35,7 +36,7 @@ int main(void)
    char fileName[256];
 
    int choice;
-   int vector[tam[0]];
+   int vector[tam[SAMPLE_SORT]];
 
    printf("Generate new Files?\n \033[1m(This option will replace existing files!!!)\033[0m\n");
    printf(" 1 - Yes\n");
@@ -46,7 +47,7 @@ int main(void)
    {
       for (int count = 0; count < ARRAY_SIZE; count++)
       {
-         sprintf(fileName, "%s%d-ascending.txt", PATH_DATA, name[count]);
+         sprintf(fileName, "%sascending-%d.txt", PATH_DATA, name[count]);
          file = fopen(fileName, "w");
 
          if (file == NULL)
@@ -59,7 +60,7 @@ int main(void)
          writeDescendingNumbersToFile(tam[count], file);
          fclose(file);
 
-         sprintf(fileName, "%s%d-descending.txt", PATH_DATA, name[count]);
+         sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[count]);
          file = fopen(fileName, "w");
 
          if (file == NULL)
@@ -72,7 +73,7 @@ int main(void)
          writeAscendingNumbersToFile(tam[count], file);
          fclose(file);
 
-         sprintf(fileName, "%s%d-descending.txt", PATH_DATA, name[count]);
+         sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[count]);
          file = fopen(fileName, "r");
 
          int vector[tam[count]];
@@ -83,7 +84,7 @@ int main(void)
 
          fclose(file);
 
-         sprintf(fileName, "%s%d-random.txt", PATH_DATA, name[count]);
+         sprintf(fileName, "%srandom-%d.txt", PATH_DATA, name[count]);
          file = fopen(fileName, "w");
 
          if (file == NULL)
@@ -143,142 +144,143 @@ int main(void)
             // autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[5], sortLowerName[5], quicksortLomuto);
             autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[6], sortLowerName[6], mergesort);
             autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[7], sortLowerName[7], radixsort);
-            autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[7], sortLowerName[7], heapsort);
+            autosort(SAMPLES, ARRAY_SIZE, PATH_DATA, PATH_OUT, name[i], tam[i], sortName[8], sortLowerName[8], heapsort);
          }
          break;
 
       case 2:
          system("clear");
 
-         sprintf(fileName, "%s%d-descending.txt", PATH_DATA, name[0]);
+         sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
+         printf("asdasd %s", fileName);
          file2Vector(vector, file);
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
 
          printf("BubbleSort...\n");
-         executionTime = measureExecutionTime(bubblesort, vector, tam[0]);
+         executionTime = measureExecutionTime(bubblesort, vector, tam[SAMPLE_SORT]);
 
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
          printf("Execution time: %f seconds\n", executionTime);
          break;
 
       case 3:
          system("clear");
 
-         sprintf(fileName, "%s%d-descending.txt", PATH_DATA, name[0]);
+         sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
          file2Vector(vector, file);
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
 
          printf("InsertSort...\n");
-         executionTime = measureExecutionTime(insertsort, vector, tam[0]);
+         executionTime = measureExecutionTime(insertsort, vector, tam[SAMPLE_SORT]);
 
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
          printf("Execution time: %f seconds\n", executionTime);
          break;
 
       case 4:
          system("clear");
 
-         sprintf(fileName, "%s%d-descending.txt", PATH_DATA, name[0]);
+         sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
          file2Vector(vector, file);
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
 
          printf("SelectSort...\n");
-         executionTime = measureExecutionTime(selectsort, vector, tam[0]);
+         executionTime = measureExecutionTime(selectsort, vector, tam[SAMPLE_SORT]);
 
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
          printf("Execution time: %f seconds\n", executionTime);
          break;
 
       case 5:
          system("clear");
 
-         sprintf(fileName, "%s%d-descending.txt", PATH_DATA, name[0]);
+         sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
          file2Vector(vector, file);
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
 
          printf("ShellSort...\n");
-         executionTime = measureExecutionTime(shellsort, vector, tam[0]);
+         executionTime = measureExecutionTime(shellsort, vector, tam[SAMPLE_SORT]);
 
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
          printf("Execution time: %f seconds\n", executionTime);
          break;
 
       case 6:
          system("clear");
 
-         sprintf(fileName, "%s%d-descending.txt", PATH_DATA, name[0]);
+         sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
          file2Vector(vector, file);
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
 
          printf("QuickSort...\n");
-         executionTime = measureExecutionTime(quicksortHoare, vector, tam[0]);
+         executionTime = measureExecutionTime(quicksortHoare, vector, tam[SAMPLE_SORT]);
 
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
          printf("Execution time: %f seconds\n", executionTime);
          break;
 
       case 7:
          system("clear");
 
-         sprintf(fileName, "%s%d-descending.txt", PATH_DATA, name[0]);
+         sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
          file2Vector(vector, file);
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
 
          printf("QuickSort Lomuto...\n");
-         // executionTime = measureExecutionTime(quicksortLomuto, vector, tam[0]);
+         // executionTime = measureExecutionTime(quicksortLomuto, vector, tam[SAMPLE_SORT]);
 
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
          printf("Execution time: %f seconds\n", executionTime);
          break;
 
       case 8:
          system("clear");
 
-         sprintf(fileName, "%s%d-descending.txt", PATH_DATA, name[0]);
+         sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
          file2Vector(vector, file);
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
 
          printf("MergeSort...\n");
-         executionTime = measureExecutionTime(mergesort, vector, tam[0]);
+         executionTime = measureExecutionTime(mergesort, vector, tam[SAMPLE_SORT]);
 
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
          printf("Execution time: %f seconds\n", executionTime);
          break;
 
       case 9:
          system("clear");
 
-         sprintf(fileName, "%s%d-descending.txt", PATH_DATA, name[0]);
+         sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
          file2Vector(vector, file);
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
 
          printf("RadixSort...\n");
-         executionTime = measureExecutionTime(radixsort, vector, tam[0]);
+         executionTime = measureExecutionTime(radixsort, vector, tam[SAMPLE_SORT]);
 
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
          printf("Execution time: %f seconds\n", executionTime);
          break;
 
       case 10:
          system("clear");
 
-         sprintf(fileName, "%s%d-descending.txt", PATH_DATA, name[0]);
+         sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
          file = fopen(fileName, "r");
          file2Vector(vector, file);
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
 
          printf("HeapSort...\n");
-         executionTime = measureExecutionTime(heapsort, vector, tam[0]);
+         executionTime = measureExecutionTime(heapsort, vector, tam[SAMPLE_SORT]);
 
-         imprimeVetor(vector, tam[0]);
+         imprimeVetor(vector, tam[SAMPLE_SORT]);
          printf("Execution time: %f seconds\n", executionTime);
          break;
 
