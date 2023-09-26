@@ -35,7 +35,7 @@ void quicksortRecurse(int vetor[], int left, int right)
 {
    int i;
    if (right > left){
-      i = particione(vetor, left, right);
+      i = particioneHoare(vetor, left, right);
       quicksortRecurse(vetor, left, i-1);
       quicksortRecurse(vetor, i+1, right);
    }
