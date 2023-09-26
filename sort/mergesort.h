@@ -4,7 +4,7 @@
 void merge(int vetor[], int left, int middle, int right)
 {
    int auxSize = right - left + 1;
-   int aux[auxSize];
+   int *aux=(int*)malloc(auxSize*sizeof(int));
 
    // Copie os elementos para o array auxiliar
    for (int i = left; i <= right; i++)
