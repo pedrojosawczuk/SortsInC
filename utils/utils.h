@@ -51,21 +51,31 @@ void checkForDuplicateNumbers(int tam, FILE *file)
 
 double measureExecutionTime(SortFunction function, int vetor[], int tam)
 {
-   struct timeval start, end;
+   clock_t start, end;
 
-   gettimeofday(&start, NULL);
+   start = clock();
    function(vetor, tam);
-   gettimeofday(&end, NULL);
-   
-   double timeTaken = (end.tv_sec - start.tv_sec) + (end.tv_sec - start.tv_sec) / 1000000.0;
+   end = clock();
+   double timeTaken = (double)(end - start) / CLOCKS_PER_SEC;
    return timeTaken;
+   
+   // struct timeval start, end;
+
+   // gettimeofday(&start, NULL);
+   // function(vetor, tam);
+   // gettimeofday(&end, NULL);
+
+   // double timeTaken = (end.tv_sec - start.tv_sec) + (end.tv_sec - start.tv_sec) / 1000000.0;
+   // return timeTaken;
 }
 
 void file2Vector(int vector[], FILE *file)
 {
    int line, i = 0;
-   while (fscanf(file, "%d", &line) != EOF)
+
+   while (!feof(file))
    {
+      fscanf(file, "%d", &line);
       vector[i] = line;
       i++;
    }
