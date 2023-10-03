@@ -22,7 +22,7 @@
 #define ARRAY_SIZE 4  // número de arquivos de amostras, 0, 1, 2, 3 ou 4
 #define SORT_SIZE 9   // número de sort algotimos nos vetores sortName[] and sortLowerName[]
 #define SAMPLE_SORT 3 // de 0, 1, 2 ou 3
-char PATH_OUT[256] = "./output/";
+char PATH_OUT[256] = "./out/";
 char PATH_DATA[256] = "./data/";
 int name[ARRAY_SIZE] = {5, 50, 75, 100};
 int tam[ARRAY_SIZE] = {50000, 500000, 750000, 1000000};
