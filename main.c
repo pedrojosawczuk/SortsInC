@@ -14,6 +14,7 @@
 #include "./sort/mergesort.h"
 #include "./sort/radixsort.h"
 #include "./sort/heapsort.h"
+#include "./search/binarysearch.h"
 #include "./utils/utils.h"
 #include "./utils/autosort.h"
 #include "./utils/writeToFile.h"
@@ -38,6 +39,7 @@ int main(void)
    int choice;
    int vector[tam[SAMPLE_SORT]];
 
+   system("clear");
    printf("Generate new Files?\n \033[1m(This option will replace existing files!!!)\033[0m\n");
    printf(" 1 - Yes\n");
    printf(" 0 - No\n");
@@ -319,6 +321,61 @@ int main(void)
          break;
       }
    }
+   
+   choice = 1;
 
+   while (choice != 0)
+   {
+      printf("\n");
+      printf("Choice a option\n");
+      printf(" 1-\033[1mBinary Search\033[0m\n");
+      printf("\n");
+      printf(" 0-\033[1mExit\033[0m\n");
+      scanf("%d", &choice);
+      
+      int operacoes = 0;
+      int value, resultadoBusca;
+      if (choice != 0) {
+         printf("Qual valor deseja buscar?");
+         scanf("%d", &value);
+      }
+
+      switch (choice)
+      {
+         case 1:
+            system("clear");
+
+            sprintf(fileName, "%sascending-%d.txt", PATH_DATA, name[SAMPLE_SORT]);
+            file = fopen(fileName, "r");
+            validaFile(file);
+            printf("%s\n", fileName);
+
+            file2Vector(vector, file);
+
+            resultadoBusca = buscaBinaria(vector, 0, tam[SAMPLE_SORT], value, &operacoes);
+            printf("\n Operações Realizadas: %d \n", operacoes);
+         
+            if (resultadoBusca != -1) {
+               printf(" Número %d foi encontrado na posição %d\n", value, resultadoBusca);
+            }
+            else {
+               printf(" Número %d não foi encontrado\n", value);
+            }
+
+         break;
+
+      case 0:
+         system("clear");
+         choice = 0;
+         printf("Exiting...\n");
+         break;
+
+      default:
+         system("clear");
+         printf("Invalid Option\n");
+         break;
+      }
+   }
+   
    return 0;
 }
