@@ -1,48 +1,39 @@
 #ifndef QUICKSORT_HOARE_H
 #define QUICKSORT_HOARE_H
 
-int particioneHoare(int vetor[], int left, int right)
-{
-   int x = vetor[left];
-   srand(time(NULL));
-   // int x = left + rand() % (right - left + 1);
-   int down = left;
-   int up = right;
-
-   while (down < up)
-   {
-      while (vetor[down] <= x && down < right)
-      {
-         down = down+1;
-      }
-      while (vetor[up] > x)
-      {
-         up = up-1;
-      }
-      if (down < up)
-      {
-         int aux = vetor[down];
-         vetor[down] = vetor[up];
-         vetor[up] = aux;
-      }
-   }
-   vetor[left] = vetor[up];
-   vetor[up] = x;
-   return up;
+int partitionHoare(int *vetor, int tam){
+    int x = vetor[tam/2];
+    int esq, dir;
+    for (esq = 0, dir = tam - 1; ; esq++, dir--) {
+        while (vetor[esq] < x){
+            esq++;
+        }
+        while (vetor[dir] > x){
+            dir--;
+        }
+        if (esq >= dir) {
+            return esq;
+        }
+        int aux2 = vetor[esq];
+        vetor[esq] = vetor[dir];
+        vetor[dir] = aux2;
+    }
 }
 
-void quicksortRecurse(int vetor[], int left, int right)
-{
-   int i;
-   if (right > left){
-      i = particioneHoare(vetor, left, right);
-      quicksortRecurse(vetor, left, i-1);
-      quicksortRecurse(vetor, i+1, right);
-   }
+void quickSortHoareR(int *vetor, int tam) {
+    if(tam<2){
+        return;
+    }
+    int esq = partitionHoare(vetor, tam);
+    if(tam>esq){
+        quickSortHoareR(vetor, esq);
+        quickSortHoareR(vetor + esq, tam - esq);
+    }
 }
 
-void quicksortHoare(int vetor[], int tam) {
-   quicksortRecurse(vetor, 0, tam-1);
+void quicksortHoare(int arr[], int tam)
+{
+   quickSortHoareR(arr, tam);
 }
 
 #endif

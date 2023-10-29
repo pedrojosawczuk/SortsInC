@@ -1,24 +1,24 @@
 #ifndef SELECTSORT_H
 #define SELECTSORT_H
 
-void selectsort(int vetor[], int tam)
+void selectsort(int arr[], int tam)
 {
    for (int i = 0; i < tam; i++)
    {
-      int menorValue = vetor[i];
+      int menorValue = arr[i];
       int menorPosicao = i;
       for (int j = i; j < tam; j++)
       {
-         if (vetor[j] < menorValue)
+         if (arr[j] < menorValue)
          {
-            menorValue = vetor[j];
+            menorValue = arr[j];
             menorPosicao = j;
          }
       }
 
-      int aux = vetor[i];
-      vetor[i] = vetor[menorPosicao];
-      vetor[menorPosicao] = aux;
+      int aux = arr[i];
+      arr[i] = arr[menorPosicao];
+      arr[menorPosicao] = aux;
    }
 }
 

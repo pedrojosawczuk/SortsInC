@@ -19,16 +19,16 @@ void writeDescendingNumbersToFile(int tam, FILE *file)
    }
 }
 
-void writeVectorNumbersToFile(int tam, FILE *file, int *vector)
+void writeVectorNumbersToFile(int tam, FILE *file, int *arr)
 {
    for (int i = 0; i < tam; i++)
    {
       if (i == 0)
       {
-         fprintf(file, "%d", vector[i]);
+         fprintf(file, "%d", arr[i]);
          continue;
       }
-      fprintf(file, "\n%d", vector[i]);
+      fprintf(file, "\n%d", arr[i]);
    }
 }
 

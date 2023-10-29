@@ -1,18 +1,18 @@
 #ifndef INSERTSORT_H
 #define INSERTSORT_H
 
-void insertsort(int vetor[], int tam)
+void insertsort(int arr[], int tam)
 {
    for (int x = 1; x <= tam - 1; x++)
    {
-      int aux = vetor[x];
+      int aux = arr[x];
       int y = x - 1;
 
-      while (y >= 0 && aux < vetor[y])
+      while (y >= 0 && aux < arr[y])
       {
-         vetor[y + 1] = vetor[y];
+         arr[y + 1] = arr[y];
          y = y - 1;
-         vetor[y + 1] = aux;
+         arr[y + 1] = aux;
       }
    }
 }

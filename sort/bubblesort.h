@@ -1,17 +1,17 @@
 #ifndef BUBBLESORT_H
 #define BUBBLESORT_H
 
-void bubblesort(int vetor[], int tam)
+void bubblesort(int arr[], int tam)
 {
    for (int x = tam; x > 1; x--)
    {
       for (int y = 0; y < x - 1; y++)
       {
-         if (vetor[y] > vetor[y + 1])
+         if (arr[y] > arr[y + 1])
          {
-            int aux = vetor[y];
-            vetor[y] = vetor[y + 1];
-            vetor[y + 1] = aux;
+            int aux = arr[y];
+            arr[y] = arr[y + 1];
+            arr[y + 1] = aux;
          }
       }
    }

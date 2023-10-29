@@ -1,7 +1,7 @@
 #ifndef BINARYSEARCH_H
 #define BINARYSEARCH_H
 
-int buscaBinaria(int vector[], int start, int end, int key, int *operacoes)
+int buscaBinaria(int arr[], int start, int end, int key, int *operacoes)
 {
    *operacoes += 1;
    int middle = (start + end) / 2;
@@ -9,14 +9,14 @@ int buscaBinaria(int vector[], int start, int end, int key, int *operacoes)
    if (start > end)
       return -1;
 
-   if (key == vector[middle])
+   if (key == arr[middle])
       return middle;
    else
    {
-      if (key > vector[middle])
-         return buscaBinaria(vector, middle + 1, end, key, operacoes);
+      if (key > arr[middle])
+         return buscaBinaria(arr, middle + 1, end, key, operacoes);
       else
-         return buscaBinaria(vector, start, middle - 1, key, operacoes);
+         return buscaBinaria(arr, start, middle - 1, key, operacoes);
    }
 }
 

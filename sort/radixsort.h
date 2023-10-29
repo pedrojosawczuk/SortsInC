@@ -1,9 +1,10 @@
 #ifndef RADIXSORT_H
 #define RADIXSORT_H
 
-void radixsort(int vetor[], int tam)
+void radixsort(int arr[], int tam)
 {
-   int base = 10, r, m, i, j;;
+   int base = 10, r, m, i, j;
+   ;
    int digit = 7;
    int *B = (int *)malloc(tam * sizeof(int));
    int *C = (int *)malloc(base * sizeof(int));
@@ -15,7 +16,7 @@ void radixsort(int vetor[], int tam)
 
       for (j = 0; j < tam; ++j)
       {
-         r = (vetor[j] / (int)(pow(10.0, m))) % base;
+         r = (arr[j] / (int)(pow(10.0, m))) % base;
          ++C[r];
       }
 
@@ -24,13 +25,13 @@ void radixsort(int vetor[], int tam)
 
       for (j = tam - 1; j >= 0; --j)
       {
-         r = (vetor[j] / (int)(pow(10.0, m))) % base;
+         r = (arr[j] / (int)(pow(10.0, m))) % base;
          i = --C[r];
-         B[i] = vetor[j];
+         B[i] = arr[j];
       }
 
       for (j = 0; j < tam; ++j)
-         vetor[j] = B[j];
+         arr[j] = B[j];
    }
 
    free(B);
