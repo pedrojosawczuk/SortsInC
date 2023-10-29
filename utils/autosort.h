@@ -12,57 +12,79 @@ typedef void (*SortFunction)(int[], int);
 
 void autosort(int SAMPLES, int ARRAY_SIZE, char PATH_DATA[256], char PATH_OUT[256], int name, int tam, char sortName[255], char sortLowerName[255], SortFunction function)
 {
-   FILE *file;
-   FILE *output;
+  FILE *file;
+  FILE *output;
 
-   char fileName[255];
-   char outputFileName[255];
+  char fileName[255];
 
-   for (int i = 0; i < SAMPLES; i++)
-   {
-      sprintf(outputFileName, "%s%s-%d-output.txt", PATH_OUT, sortLowerName, name);
-      output = fopen(outputFileName, "a");
-      validaFile(output);
+  for (int i = 0; i < SAMPLES; i++)
+  {
+    sprintf(fileName, "%s%s-%d-output.txt", PATH_OUT, sortLowerName, name);
+    output = fopen(fileName, "a");
+    validaFile(fileName, output);
 
-      int choice;
-      int vector[tam];
+    int choice;
+    int arr[tam];
 
-      double executionTime;
+    double executionTime;
 
-      printf("[AUTO] %s[%d](%d/%d) in '%s' |", sortName, tam, i + 1, SAMPLES, outputFileName);
-      fprintf(output, "%s[%d](%d/%d): \n", sortName, tam, i + 1, SAMPLES);
+    printf("[AUTO] %s[%d](%d/%d) in '%s' |", sortName, tam, i + 1, SAMPLES, fileName);
 
-      sprintf(fileName, "%sascending-%d.txt", PATH_DATA, name);
-      file = fopen(fileName, "r");
-      validaFile(file);
+    sprintf(fileName, "%sascending-%d.txt", PATH_DATA, name);
+    file = fopen(fileName, "r");
+    validaFile(fileName, file);
 
-      file2Vector(vector, file);
-      fclose(file);
-      executionTime = measureExecutionTime(function, vector, tam);
-      fprintf(output, "  Ascending: %f seconds\n", executionTime);
-      printf(" asc: %f seconds", executionTime);
+    file2Vector(arr, file);
+    fclose(file);
+    executionTime = measureExecutionTime(function, arr, tam);
+    if (isInAscendingOrder(arr, tam))
+    {
+      printf(" [✔️]");
+    }
+    else
+    {
+      printf(" [❌]");
+    }
+    fprintf(output, "%f", executionTime);
+    printf("asc: %f seconds", executionTime);
 
-      sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name);
-      file = fopen(fileName, "r");
-      validaFile(file);
+    sprintf(fileName, "%sdescending-%d.txt", PATH_DATA, name);
+    file = fopen(fileName, "r");
+    validaFile(fileName, file);
 
-      file2Vector(vector, file);
-      fclose(file);
-      executionTime = measureExecutionTime(function, vector, tam);
-      fprintf(output, "  Descending: %f seconds\n", executionTime);
-      printf(" desc: %f seconds", executionTime);
+    file2Vector(arr, file);
+    fclose(file);
+    executionTime = measureExecutionTime(function, arr, tam);
+    if (isInAscendingOrder(arr, tam))
+    {
+      printf(" [✔️]");
+    }
+    else
+    {
+      printf(" [❌]");
+    }
+    fprintf(output, ";%f", executionTime);
+    printf("desc: %f seconds", executionTime);
 
-      sprintf(fileName, "%srandom-%d.txt", PATH_DATA, name);
-      file = fopen(fileName, "r");
-      validaFile(file);
-      
-      file2Vector(vector, file);
-      fclose(file);
-      executionTime = measureExecutionTime(function, vector, tam);
-      fprintf(output, "  Random: %f seconds\n\n", executionTime);
-      printf(" rand: %f seconds\n", executionTime);
-      fclose(output);
-   }
+    sprintf(fileName, "%srandom-%d.txt", PATH_DATA, name);
+    file = fopen(fileName, "r");
+    validaFile(fileName, file);
+
+    file2Vector(arr, file);
+    fclose(file);
+    executionTime = measureExecutionTime(function, arr, tam);
+    if (isInAscendingOrder(arr, tam))
+    {
+      printf(" [✔️]");
+    }
+    else
+    {
+      printf(" [❌]");
+    }
+    fprintf(output, ";%f\n", executionTime);
+    printf("rand: %f seconds\n", executionTime);
+    fclose(output);
+  }
 }
 
 #endif
